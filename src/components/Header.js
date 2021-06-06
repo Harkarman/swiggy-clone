@@ -1,19 +1,47 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
-    <div className="flex flex-wrap py-2">
-      <div className="w-full px-4">
-        <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-blue-600 rounded">
-          <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-            <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
-              <a
-                className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                href="#pablo"
+    <div className="container items-center">
+      <div
+        className="
+      text-gray-700
+      transition
+      duration-500
+      ease-in-out
+      transform
+      bg-white
+      border
+      rounded-lg
+    "
+      >
+        <div className="flex flex-col flex-wrap p-5 mx-auto items-center md:flex-row">
+          <div className="justify-center focus:outline-none md:ml-auto md:mr-auto">
+            <div className="inline-flex items-center">
+              <img src="/images/logo.svg" alt="" className="w-8" />
+              <h2
+                className="
+              block
+              p-2
+              text-xl
+              font-medium
+              tracking-tighter
+              text-black
+              transition
+              duration-500
+              ease-in-out
+              transform
+              cursor-pointer
+              hover:text-gray-500
+              lg:text-x
+              lg:mr-8
+            "
               >
-                Swiggy clone
-              </a>
+                <Link to="/">Swiggy Clone</Link>
+              </h2>
             </div>
           </div>
-        </nav>
+        </div>
       </div>
     </div>
   );

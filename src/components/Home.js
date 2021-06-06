@@ -1,17 +1,39 @@
+import { Link } from "react-router-dom";
+import Header from "./Header";
+
 export default function Home() {
+  const cities = [
+    "Bangalore",
+    "New Delhi",
+    "Chandigarh",
+    "Jaipur",
+    "Chennai",
+    "Hyderabad",
+    "Kolkata",
+  ];
   return (
-    <div className="-mx-3 md:flex items-start">
-      <div className="px-3 md:w-1/4">
-        <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-5 text-gray-800 font-light mb-6">
-          <div class="w-full flex mb-4 items-center">
-            <div class="flex-grow pl-3">
-              <h6 class="font-bold text-sm uppercase text-gray-600">
-                Bangalore
-              </h6>
-            </div>
+    <div>
+      <Header />
+
+      <section className="mx-auto">
+        <div className="container px-5 mx-auto lg:px-24 lg:py-20">
+          <div className="flex flex-col w-full mb-12 text-center">
+            <h2 className="mb-4 text-md font-bold tracking-widest text-black uppercase title-font">
+              {" "}
+              SELECT YOUR LOCATION{" "}
+            </h2>
+          </div>
+          <div className="flex flex-col flex-wrap justify-between items-center md:flex-row">
+            {cities.map((city) => (
+              <Link to={`/restaurants/${city}`} key={city}>
+                <h3 className="text-sm font-semibold tracking-widest text-black uppercase title-font">
+                  {city}
+                </h3>
+              </Link>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

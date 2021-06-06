@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import firebase from "../lib/firebase";
-import Header from "../components/Header";
-import ListItem from "../components/ListItem";
+import Header from "./Header";
+import SelectLocation from "./SelectLocation";
+import ListItem from "./ListItem";
 
 export default function RestaurantList() {
-  const [city, setCity] = useState([]);
+  const city = useParams().city;
+  // const [city, setCity] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
+  // eslint-disable-next-line no-unused-vars
+  let location = useLocation();
   useEffect(() => {
     firebase
       .firestore()
@@ -24,59 +29,12 @@ export default function RestaurantList() {
   return (
     <div>
       <Header />
-      <div>
-        <button
-          type="button"
-          onClick={() => {
-            setCity("Bangalore");
-          }}
-        >
-          Bangalore
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setCity("New Delhi");
-          }}
-        >
-          New Delhi
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setCity("Chennai");
-          }}
-        >
-          Chennai
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setCity("Kolkata");
-          }}
-        >
-          Kolkata
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setCity("Chandigarh");
-          }}
-        >
-          Chandigarh
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            setCity("Jaipur");
-          }}
-        >
-          Jaipur
-        </button>
+      <SelectLocation />
+      <div className="flex-row">
+        {restaurants.map((restaurant) => (
+          <ListItem restaurant={restaurant} key={restaurant.id} />
+        ))}
       </div>
-      {restaurants.map((restaurant) => (
-        <ListItem restaurant={restaurant} key={restaurant.id} />
-      ))}
     </div>
   );
 }
