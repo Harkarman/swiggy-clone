@@ -16,4 +16,4 @@ const firebase = Firebase.initializeApp(firebaseConfig);
 // seedDatabase(firebase);
 // console.log("firebase", firebase);
 
-export { firebase };
+export default firebase;

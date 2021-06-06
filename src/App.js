@@ -1,13 +1,14 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import * as ROUTES from "./constants/routes";
-import Dashboard from "./pages/dashboard";
-import NotFound from "./pages/not-found";
+// import Home from "./components/Home";
+import RestaurantList from "./components/RestaurantList";
+import NotFound from "./components/NotFound";
 
 export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path={ROUTES.DASHBOARD} component={Dashboard} exact />
+        <Route path="/" component={RestaurantList} exact />
+        {/* <Route path="/restaurant" component={RestaurantList} /> */}
         <Route component={NotFound} />
       </Switch>
     </Router>
